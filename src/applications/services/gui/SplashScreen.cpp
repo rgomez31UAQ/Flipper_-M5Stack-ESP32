@@ -22,8 +22,8 @@ void SplashScreen::render(std::shared_ptr<TFT_eSPI> tft)
 
     vTaskDelay(pdMS_TO_TICKS(1000 * 2));
 
-    tft->fillScreen(DEFAULT_BACKGROUND_COLOR);
-    tft->setTextColor(DEFAULT_PRIMARY_COLOR);
+    tft->fillScreen(THEME_BACKGROUND_COLOR);
+    tft->setTextColor(THEME_PRIMARY_COLOR);
 
     this->setTextSizeMedium(tft);
     auto title = String("Orca One");

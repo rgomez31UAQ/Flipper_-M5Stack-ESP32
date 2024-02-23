@@ -77,6 +77,9 @@ void RunScreen::execute()
         vTaskDelay(pdMS_TO_TICKS(500));
     }
 
+    this->_progressBar.setProgress(100);
+    this->_progressBar.render(this->_tft);
+
     infraredInterface->disable();
 
     this->_isRunning = false;
@@ -102,7 +105,7 @@ void RunScreen::render(std::shared_ptr<TFT_eSPI> tft)
     auto displaySettings = displayInterface->getSettings();
 
     this->setTextSizeSmall(tft);
-    tft->setTextColor(DEFAULT_PRIMARY_COLOR);
+    tft->setTextColor(THEME_PRIMARY_COLOR);
 
     String title = this->_region == TVBGoneRegion::AmericasAsia
                        ? "Americas / Asia"
