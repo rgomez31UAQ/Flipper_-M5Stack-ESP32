@@ -8,8 +8,7 @@ using namespace Domain::Entities;
 
 void ButtonMenu::render(std::shared_ptr<TFT_eSPI> tft)
 {
-    auto displayInterface = DeviceBase::getInstance()->getInterfaces().displayInterface;
-    auto displaySettings = displayInterface->getSettings();
+    auto displaySettings = this->getDisplaySettings();
 
     // Draw button border
     tft->drawRoundRect(this->_x, this->_y, displaySettings.width - 20, 25, 8, this->_borderColor);

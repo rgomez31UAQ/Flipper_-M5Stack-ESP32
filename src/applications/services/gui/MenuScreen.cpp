@@ -17,7 +17,7 @@ MenuItem MenuScreen::newBackItem()
         ScreenManager::setCurrentScreen(currentScreen);
     };
 
-    auto item = MenuItem("backMenuItem", TRANSLATE("Back"));
+    auto item = MenuItem("backMenuItem", this->translate("Back"));
 
     item.setOnClick(action);
 
@@ -37,8 +37,7 @@ MenuScreen::~MenuScreen()
 
 void MenuScreen::render(std::shared_ptr<TFT_eSPI> tft)
 {
-    auto displayInterface = DeviceBase::getInstance()->getInterfaces().displayInterface;
-    auto displaySettings = displayInterface->getSettings();
+    auto displaySettings = this->getDisplaySettings();
 
     // tft->fillScreen(THEME_BACKGROUND_COLOR);
 
