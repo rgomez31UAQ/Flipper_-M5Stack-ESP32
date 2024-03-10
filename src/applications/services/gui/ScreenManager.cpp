@@ -44,8 +44,8 @@ void ScreenManager::render(std::shared_ptr<TFT_eSPI> tft)
 {
     tft->fillScreen(THEME_BACKGROUND_COLOR);
     this->setTextSizeSmall(tft);
-    this->_currentScreen->render(tft);
     this->_topBar->render(tft);
+    this->_currentScreen->render(tft);
 }
 
 ScreenManager *ScreenManager::getInstance()
@@ -58,7 +58,7 @@ void ScreenManager::render()
     ScreenManager::_instance->render(ScreenManager::_instance->_tft);
 }
 
-void ScreenManager::setCurrentScreen(Screen *newScreen)
+void ScreenManager::setCurrentScreen(Screen *newScreen, bool setPrevious)
 {
     auto manager = ScreenManager::getInstance();
     bool isBack = manager->_currentScreen != nullptr && manager->_currentScreen->getPreviousScreen() == newScreen ? true : false;
@@ -69,7 +69,7 @@ void ScreenManager::setCurrentScreen(Screen *newScreen)
         manager->_currentScreen = nullptr;
         delete screenToDelete;
     }
-    else
+    else if (setPrevious)
     {
         newScreen->setPreviousScreen(manager->_currentScreen);
     }
