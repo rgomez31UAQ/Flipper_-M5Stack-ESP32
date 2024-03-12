@@ -28,7 +28,7 @@ Launcher *Launcher::getInstance()
 
 void Launcher::begin()
 {
-    auto tft = DeviceBase::getInstance()->getInterfaces().displayInterface->getTFT();
+    auto tft = DeviceBase::getInstance()->getInterfaces().display->getTFT();
     auto settings = DeviceBase::getInstance()->getSettings();
     auto language = settings->getLanguage();
 
